@@ -54,12 +54,20 @@ while True:
     keys = pygame.key.get_pressed()
     if keys[KEY_UP]:
         player.rect.y -= 5
+        if player.rect.bottom < 0:
+            player.rect.top = SCREEN_HEIGHT
     if keys[KEY_DOWN]:
         player.rect.y += 5
+        if player.rect.top > SCREEN_HEIGHT:
+            player.rect.bottom = 0
     if keys[KEY_LEFT]:
         player.rect.x -= 5
+        if player.rect.right < 0:
+            player.rect.left = SCREEN_WIDTH
     if keys[KEY_RIGHT]:
         player.rect.x += 5
+        if player.rect.left > SCREEN_WIDTH:
+            player.rect.right = 0
 
     # Draw the screen
     screen.fill((255, 255, 255))
